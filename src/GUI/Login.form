@@ -23,10 +23,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PanelPrincipal" alignment="0" max="32767" attributes="0"/>
+          <Component id="Pnl_PanelPrincipal" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <Component id="Pnl_PanelSecundario" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -34,16 +34,16 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="PanelPrincipal" min="-2" max="-2" attributes="0"/>
+              <Component id="Pnl_PanelPrincipal" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <Component id="Pnl_PanelSecundario" max="32767" attributes="0"/>
               <EmptySpace pref="12" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="PanelPrincipal">
+    <Container class="javax.swing.JPanel" name="Pnl_PanelPrincipal">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="c5" green="6a" red="31" type="rgb"/>
@@ -134,7 +134,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="Pnl_PanelSecundario">
 
       <Layout>
         <DimensionLayout dim="0">
