@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import BLL.Usuario;
+import BLL.UsuarioService;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
@@ -16,16 +18,51 @@ import javax.swing.table.DefaultTableModel;
 public class Admin extends JFrame {
     
     private final JFrame parent;
+    private UsuarioService usuarioService;
+    private DefaultTableModel modelo;
     /**
      * Creates new form Admin
      * @param parent
      */
     public Admin(JFrame parent) {
+        
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         this.parent = parent;
         this.parent.setVisible(false);
+        
+        modelo = new DefaultTableModel();
+        
+        usuarioService = new UsuarioService();
+        
+        setModelo();
+        setDatos();     
+    }
+    
+    private void setModelo(){
+        String[] cabecera = {"Identificación", "Nombre", "Fecha de nacimiento", "Teléfono", "Dirección", "Ciudad"};
+        modelo.setColumnIdentifiers(cabecera);
+        Tbl_Lista.setModel(modelo);
+    }
+    
+    private void setDatos(){
+        modelo = new DefaultTableModel();
+        setModelo();
+        Object[] datos = new Object[modelo.getColumnCount()];
+        
+        for(Usuario usuario: usuarioService.consultarUsuarios()){
+            datos[0] = usuario.getIdentificacion();
+            datos[1] = usuario.getNombre();
+            datos[2] = usuario.getFechaDeNacimiento();
+            datos[3] = usuario.getTelefono();
+            datos[4] = usuario.getDireccion();
+            datos[5] = usuario.getCiudad();
+            setModelo();
+            modelo.addRow(datos);
+        }
+        
+        Tbl_Lista.setModel(modelo);
     }
 
     /**
@@ -47,14 +84,25 @@ public class Admin extends JFrame {
         Btn_GenerarReporte = new javax.swing.JButton();
         Pnl_BarraDeUtilidades = new javax.swing.JPanel();
         Registrar = new javax.swing.JButton();
-        Eliminar = new javax.swing.JButton();
         Lbl_LogOut = new javax.swing.JLabel();
         Pnl_Registros = new javax.swing.JPanel();
         Tbl_Tabla = new javax.swing.JScrollPane();
         Tbl_Lista = new javax.swing.JTable();
+        Lbl_Identificacion = new javax.swing.JLabel();
+        Inpt_Identificacion = new javax.swing.JTextField();
+        Lbl_Telefono = new javax.swing.JLabel();
+        Inpt_Telefono = new javax.swing.JTextField();
+        Lbl_Nombre = new javax.swing.JLabel();
+        Inpt_Nombre = new javax.swing.JTextField();
+        Inpt_Direccion = new javax.swing.JTextField();
+        Lbl_Direccion = new javax.swing.JLabel();
+        Lbl_FechaDeNacimiento = new javax.swing.JLabel();
+        Inpt_FechaDeNacimiento = new javax.swing.JTextField();
+        Inpt_Ciudad = new javax.swing.JTextField();
+        Lbl_Ciudad = new javax.swing.JLabel();
+        Img_Eliminar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(597, 429));
 
         PanelPrincipal.setBackground(new java.awt.Color(49, 106, 197));
 
@@ -173,22 +221,14 @@ public class Admin extends JFrame {
         Registrar.setForeground(new java.awt.Color(255, 255, 255));
         Registrar.setText("Registrar");
         Registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegistrarMouseClicked(evt);
+            }
+        });
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegistrarActionPerformed(evt);
-            }
-        });
-
-        Eliminar.setBackground(new java.awt.Color(49, 106, 197));
-        Eliminar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        Eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        Eliminar.setText("Eliminar");
-        Eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Eliminar.setMaximumSize(new java.awt.Dimension(107, 31));
-        Eliminar.setMinimumSize(new java.awt.Dimension(107, 31));
-        Eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarActionPerformed(evt);
             }
         });
 
@@ -196,20 +236,16 @@ public class Admin extends JFrame {
         Pnl_BarraDeUtilidades.setLayout(Pnl_BarraDeUtilidadesLayout);
         Pnl_BarraDeUtilidadesLayout.setHorizontalGroup(
             Pnl_BarraDeUtilidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Pnl_BarraDeUtilidadesLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_BarraDeUtilidadesLayout.createSequentialGroup()
+                .addContainerGap(81, Short.MAX_VALUE)
                 .addComponent(Registrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(73, 73, 73))
         );
         Pnl_BarraDeUtilidadesLayout.setVerticalGroup(
             Pnl_BarraDeUtilidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pnl_BarraDeUtilidadesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Pnl_BarraDeUtilidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Registrar))
+                .addComponent(Registrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -247,21 +283,133 @@ public class Admin extends JFrame {
         });
         Tbl_Tabla.setViewportView(Tbl_Lista);
 
+        Lbl_Identificacion.setText("Identificación");
+
+        Inpt_Identificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inpt_IdentificacionActionPerformed(evt);
+            }
+        });
+
+        Lbl_Telefono.setText("Teléfono");
+
+        Inpt_Telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inpt_TelefonoActionPerformed(evt);
+            }
+        });
+
+        Lbl_Nombre.setText("Nombre");
+
+        Inpt_Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inpt_NombreActionPerformed(evt);
+            }
+        });
+
+        Inpt_Direccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inpt_DireccionActionPerformed(evt);
+            }
+        });
+
+        Lbl_Direccion.setText("Dirección");
+
+        Lbl_FechaDeNacimiento.setText("Fecha de nacimiento");
+
+        Inpt_FechaDeNacimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inpt_FechaDeNacimientoActionPerformed(evt);
+            }
+        });
+
+        Inpt_Ciudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inpt_CiudadActionPerformed(evt);
+            }
+        });
+
+        Lbl_Ciudad.setText("Ciudad");
+
+        Img_Eliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\REINALDO\\Documents\\NetBeansProjects\\Mi transporte S.A\\assets\\Eliminar.png")); // NOI18N
+        Img_Eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Img_Eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Img_EliminarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout Pnl_RegistrosLayout = new javax.swing.GroupLayout(Pnl_Registros);
         Pnl_Registros.setLayout(Pnl_RegistrosLayout);
         Pnl_RegistrosLayout.setHorizontalGroup(
             Pnl_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_RegistrosLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(Pnl_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Pnl_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Lbl_Identificacion)
+                        .addComponent(Inpt_Identificacion)
+                        .addComponent(Inpt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Lbl_Telefono))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(Pnl_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Lbl_Nombre)
+                    .addComponent(Lbl_Direccion)
+                    .addComponent(Inpt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Inpt_Direccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addGroup(Pnl_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Lbl_Ciudad)
+                    .addComponent(Lbl_FechaDeNacimiento)
+                    .addComponent(Inpt_FechaDeNacimiento)
+                    .addComponent(Inpt_Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_RegistrosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Tbl_Tabla)
-                .addContainerGap())
+                .addComponent(Tbl_Tabla, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Img_Eliminar))
         );
         Pnl_RegistrosLayout.setVerticalGroup(
             Pnl_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pnl_RegistrosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Tbl_Tabla, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(Pnl_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Pnl_RegistrosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Tbl_Tabla, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Pnl_RegistrosLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(Img_Eliminar)))
+                .addGap(18, 18, 18)
+                .addGroup(Pnl_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Pnl_RegistrosLayout.createSequentialGroup()
+                        .addComponent(Lbl_Identificacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Inpt_Identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Lbl_Telefono)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Inpt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Pnl_RegistrosLayout.createSequentialGroup()
+                        .addComponent(Lbl_FechaDeNacimiento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Inpt_FechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Lbl_Ciudad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Inpt_Ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Pnl_RegistrosLayout.createSequentialGroup()
+                        .addComponent(Lbl_Nombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Inpt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(Pnl_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Pnl_RegistrosLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(Inpt_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(Pnl_RegistrosLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(Lbl_Direccion)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -271,16 +419,15 @@ public class Admin extends JFrame {
             .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Pnl_Navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Pnl_BarraDeUtilidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119)
-                        .addComponent(Lbl_LogOut)
-                        .addGap(8, 8, 8)))
+                .addComponent(Pnl_Navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(Pnl_Registros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Pnl_BarraDeUtilidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119)
+                .addComponent(Lbl_LogOut)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,11 +437,11 @@ public class Admin extends JFrame {
                 .addComponent(Pnl_Navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Pnl_Registros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Lbl_LogOut, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Pnl_BarraDeUtilidades, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -311,10 +458,6 @@ public class Admin extends JFrame {
         // TODO add your handling code here:
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_Lbl_MinimizarMouseClicked
-
-    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EliminarActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
@@ -338,6 +481,61 @@ public class Admin extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Btn_GenerarReporteActionPerformed
 
+    private void Inpt_IdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inpt_IdentificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inpt_IdentificacionActionPerformed
+
+    private void Inpt_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inpt_TelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inpt_TelefonoActionPerformed
+
+    private void Inpt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inpt_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inpt_NombreActionPerformed
+
+    private void Inpt_DireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inpt_DireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inpt_DireccionActionPerformed
+
+    private void Inpt_FechaDeNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inpt_FechaDeNacimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inpt_FechaDeNacimientoActionPerformed
+
+    private void Inpt_CiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inpt_CiudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inpt_CiudadActionPerformed
+
+    private void RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarMouseClicked
+        // TODO add your handling code here:
+        Usuario usuario = new Usuario();
+        usuario.setIdentificacion(Inpt_Identificacion.getText());
+        usuario.setNombre(Inpt_Nombre.getText());
+        usuario.setFechaDeNacimiento(Inpt_FechaDeNacimiento.getText());
+        usuario.setTelefono(Inpt_Telefono.getText());
+        usuario.setDireccion(Inpt_Direccion.getText());
+        usuario.setCiudad(Inpt_Ciudad.getText());
+        
+        usuarioService.registrarUsuario(usuario);
+        limpiarCampos();
+        setDatos();
+    }//GEN-LAST:event_RegistrarMouseClicked
+
+    private void Img_EliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Img_EliminarMouseClicked
+        // TODO add your handling code here:
+        int index = Tbl_Lista.getSelectedRow();
+        String id = Tbl_Lista.getValueAt(index, 0).toString();
+        usuarioService.eliminarUsuario(id);
+        setDatos();
+    }//GEN-LAST:event_Img_EliminarMouseClicked
+    
+    private void limpiarCampos(){
+        Inpt_Identificacion.setText("");
+        Inpt_Nombre.setText("");
+        Inpt_FechaDeNacimiento.setText("");
+        Inpt_Telefono.setText("");
+        Inpt_Direccion.setText("");
+        Inpt_Ciudad.setText("");
+    }
     /**
      * @param args the command line arguments
      */
@@ -348,11 +546,23 @@ public class Admin extends JFrame {
     private javax.swing.JButton Btn_Consultar;
     private javax.swing.JButton Btn_GenerarReporte;
     private javax.swing.JButton Btn_IngresarEnvio;
-    private javax.swing.JButton Eliminar;
+    private javax.swing.JLabel Img_Eliminar;
+    private javax.swing.JTextField Inpt_Ciudad;
+    private javax.swing.JTextField Inpt_Direccion;
+    private javax.swing.JTextField Inpt_FechaDeNacimiento;
+    private javax.swing.JTextField Inpt_Identificacion;
+    private javax.swing.JTextField Inpt_Nombre;
+    private javax.swing.JTextField Inpt_Telefono;
     private javax.swing.JLabel Lbl_Bienvenida;
     private javax.swing.JLabel Lbl_Cerrar;
+    private javax.swing.JLabel Lbl_Ciudad;
+    private javax.swing.JLabel Lbl_Direccion;
+    private javax.swing.JLabel Lbl_FechaDeNacimiento;
+    private javax.swing.JLabel Lbl_Identificacion;
     private javax.swing.JLabel Lbl_LogOut;
     private javax.swing.JLabel Lbl_Minimizar;
+    private javax.swing.JLabel Lbl_Nombre;
+    private javax.swing.JLabel Lbl_Telefono;
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JPanel Pnl_BarraDeUtilidades;
     private javax.swing.JPanel Pnl_Navbar;

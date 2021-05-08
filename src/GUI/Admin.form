@@ -3,9 +3,6 @@
 <Form version="1.6" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[597, 429]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -29,19 +26,17 @@
           <Component id="PanelPrincipal" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Pnl_Navbar" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="Pnl_BarraDeUtilidades" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                      <Component id="Lbl_LogOut" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <Component id="Pnl_Navbar" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Component id="Pnl_Registros" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="Pnl_BarraDeUtilidades" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+              <Component id="Lbl_LogOut" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -52,12 +47,12 @@
               <Component id="Pnl_Navbar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Pnl_Registros" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="Lbl_LogOut" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="Pnl_BarraDeUtilidades" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -252,12 +247,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="81" max="32767" attributes="0"/>
                   <Component id="Registrar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
-                  <Component id="Eliminar" min="-2" pref="107" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -265,10 +258,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Eliminar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Registrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="Registrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -292,33 +282,8 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="RegistrarMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistrarActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="Eliminar">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c5" green="6a" red="31" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Eliminar"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
-            </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[107, 31]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[107, 31]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -342,18 +307,89 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="Lbl_Identificacion" min="-2" max="-2" attributes="0"/>
+                          <Component id="Inpt_Identificacion" alignment="0" max="32767" attributes="0"/>
+                          <Component id="Inpt_Telefono" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="Lbl_Telefono" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="Lbl_Nombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Lbl_Direccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Inpt_Nombre" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="Inpt_Direccion" alignment="1" min="-2" pref="148" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="Lbl_Ciudad" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Lbl_FechaDeNacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Inpt_FechaDeNacimiento" max="32767" attributes="0"/>
+                      <Component id="Inpt_Ciudad" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Tbl_Tabla" max="32767" attributes="0"/>
+                  <Component id="Tbl_Tabla" min="-2" pref="552" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="Img_Eliminar" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Tbl_Tabla" min="-2" pref="106" max="-2" attributes="0"/>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Tbl_Tabla" min="-2" pref="106" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="Img_Eliminar" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="Lbl_Identificacion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Inpt_Identificacion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Lbl_Telefono" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Inpt_Telefono" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="Lbl_FechaDeNacimiento" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Inpt_FechaDeNacimiento" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Lbl_Ciudad" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Inpt_Ciudad" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="Lbl_Nombre" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Inpt_Nombre" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="Inpt_Direccion" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Component id="Lbl_Direccion" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -434,6 +470,79 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="Lbl_Identificacion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Identificaci&#xf3;n"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Inpt_Identificacion">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_IdentificacionActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Lbl_Telefono">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Inpt_Telefono">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_TelefonoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Lbl_Nombre">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Inpt_Nombre">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_NombreActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Inpt_Direccion">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_DireccionActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Lbl_Direccion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Lbl_FechaDeNacimiento">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Fecha de nacimiento"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Inpt_FechaDeNacimiento">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_FechaDeNacimientoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Inpt_Ciudad">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_CiudadActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Lbl_Ciudad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ciudad"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Img_Eliminar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\REINALDO\Documents\NetBeansProjects\Mi transporte S.A\assets\Eliminar.png"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Img_EliminarMouseClicked"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
