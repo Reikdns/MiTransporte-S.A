@@ -194,7 +194,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Btn_ConsultarMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Btn_ConsultarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Btn_IngresarEnvio">
@@ -215,7 +214,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Btn_IngresarEnvioMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Btn_IngresarEnvioActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Btn_GenerarReporte">
@@ -236,7 +234,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Btn_GenerarReporteMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Btn_GenerarReporteActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -282,7 +279,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="RegistrarMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistrarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -475,9 +471,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Inpt_Identificacion">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_IdentificacionActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="Lbl_Telefono">
           <Properties>
@@ -485,9 +478,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Inpt_Telefono">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_TelefonoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="Lbl_Nombre">
           <Properties>
@@ -495,14 +485,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Inpt_Nombre">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_NombreActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Inpt_Direccion">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_DireccionActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="Lbl_Direccion">
           <Properties>
@@ -515,14 +499,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Inpt_FechaDeNacimiento">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_FechaDeNacimientoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Inpt_Ciudad">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_CiudadActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="Lbl_Ciudad">
           <Properties>

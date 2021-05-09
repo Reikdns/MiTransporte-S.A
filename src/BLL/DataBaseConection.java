@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+//Clase que administra la conexión a la base de datos.
+
 package BLL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author REINALDO
- */
 public class DataBaseConection {
     
     private final String remoteConection = "jdbc:sqlserver://mi-transporte-sa.database.windows.net:1433;database=MiTransporteSA;user=juancabolaños@mi-transporte-sa;password=Juanca123456;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
@@ -55,7 +47,4 @@ public class DataBaseConection {
     public void setConection(Connection conection) {
         this.conection = conection;
     }
-    
-    
-    
 }

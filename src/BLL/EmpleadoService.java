@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+//Servicio para y consultar empleados.
+
 package BLL;
 
+import Entity.Empleado;
+import DAL.EmpleadoRepository;
 import java.util.ArrayList;
 
-/**
- *
- * @author REINALDO
- */
 public class EmpleadoService {
     
     private EmpleadoRepository empleadoRepository;
@@ -25,7 +21,7 @@ public class EmpleadoService {
         empleadoRepository = new EmpleadoRepository(conection.getConection());
     }
     
-    public ArrayList<Empleado> consultarUsuarios(){
+    public ArrayList<Empleado> consultarEmpleados(){
         conection.establecerConexion();
         empleados = empleadoRepository.consultarEmpleados();
         conection.cerrarConexion();

@@ -196,9 +196,6 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="Inpt_Fecha">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_FechaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Lbl_Fecha">
       <Properties>
@@ -211,9 +208,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Inpt_CiudadDestino">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_CiudadDestinoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Lbl_Observacion">
       <Properties>
@@ -221,9 +215,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Inpt_Observacion">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_ObservacionActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Lbl_IdentificacionUsuario">
       <Properties>
@@ -231,9 +222,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Inpt_IdentificacionUsuario">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_IdentificacionUsuarioActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Lbl_CiudadOrigen">
       <Properties>
@@ -241,9 +229,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Inpt_CiudadOrigen">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inpt_CiudadOrigenActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Btn_Registrar">
       <Properties>
@@ -263,7 +248,6 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Btn_RegistrarMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Btn_RegistrarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Lbl_Atras">

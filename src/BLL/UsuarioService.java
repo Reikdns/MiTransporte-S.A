@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+//Servicio para registrar y consultar usuarios.
+
 package BLL;
+import Entity.Usuario;
 import DAL.UsuarioRepository;
 import java.util.ArrayList;
 /**
