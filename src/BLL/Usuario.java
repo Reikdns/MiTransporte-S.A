@@ -5,11 +5,13 @@
  */
 package BLL;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author REINALDO
  */
-public class Usuario extends Persona {
+public class Usuario extends Persona{
     
     private String direccion;
     private String ciudad;

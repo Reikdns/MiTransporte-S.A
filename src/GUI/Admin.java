@@ -9,6 +9,7 @@ import BLL.Usuario;
 import BLL.UsuarioService;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -164,6 +165,11 @@ public class Admin extends JFrame {
         Btn_Consultar.setForeground(new java.awt.Color(255, 255, 255));
         Btn_Consultar.setText("Consultar ciudad");
         Btn_Consultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_Consultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_ConsultarMouseClicked(evt);
+            }
+        });
         Btn_Consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_ConsultarActionPerformed(evt);
@@ -175,6 +181,11 @@ public class Admin extends JFrame {
         Btn_IngresarEnvio.setForeground(new java.awt.Color(255, 255, 255));
         Btn_IngresarEnvio.setText("Ingresar envíos");
         Btn_IngresarEnvio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_IngresarEnvio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_IngresarEnvioMouseClicked(evt);
+            }
+        });
         Btn_IngresarEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_IngresarEnvioActionPerformed(evt);
@@ -184,8 +195,13 @@ public class Admin extends JFrame {
         Btn_GenerarReporte.setBackground(new java.awt.Color(49, 106, 197));
         Btn_GenerarReporte.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         Btn_GenerarReporte.setForeground(new java.awt.Color(255, 255, 255));
-        Btn_GenerarReporte.setText("Generar reporte");
+        Btn_GenerarReporte.setText("Consultar reportes");
         Btn_GenerarReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_GenerarReporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_GenerarReporteMouseClicked(evt);
+            }
+        });
         Btn_GenerarReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_GenerarReporteActionPerformed(evt);
@@ -417,10 +433,6 @@ public class Admin extends JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Pnl_Navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(Pnl_Registros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -428,14 +440,15 @@ public class Admin extends JFrame {
                 .addGap(119, 119, 119)
                 .addComponent(Lbl_LogOut)
                 .addGap(26, 26, 26))
+            .addComponent(Pnl_Navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGap(18, 18, 18)
                 .addComponent(Pnl_Navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addComponent(Pnl_Registros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,10 +478,14 @@ public class Admin extends JFrame {
 
     private void Lbl_LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_LogOutMouseClicked
         // TODO add your handling code here:
-        parent.setVisible(true);
+        int opcion = JOptionPane.showConfirmDialog(this, "¿Seguro que desea finalizar la sesión?", "Cerrar sesión", JOptionPane.YES_NO_OPTION);
+        
+        if(opcion != 1){
+            parent.setVisible(true);
         this.dispose();
+        }
     }//GEN-LAST:event_Lbl_LogOutMouseClicked
-
+     
     private void Btn_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConsultarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Btn_ConsultarActionPerformed
@@ -527,6 +544,24 @@ public class Admin extends JFrame {
         usuarioService.eliminarUsuario(id);
         setDatos();
     }//GEN-LAST:event_Img_EliminarMouseClicked
+
+    private void Btn_ConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_ConsultarMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new ConsultaDeCiudad(this).setVisible(true);
+    }//GEN-LAST:event_Btn_ConsultarMouseClicked
+
+    private void Btn_IngresarEnvioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_IngresarEnvioMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new IngresoDeEnvios(this).setVisible(true);
+    }//GEN-LAST:event_Btn_IngresarEnvioMouseClicked
+
+    private void Btn_GenerarReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_GenerarReporteMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new ConsultaDeReportes(this).setVisible(true);
+    }//GEN-LAST:event_Btn_GenerarReporteMouseClicked
     
     private void limpiarCampos(){
         Inpt_Identificacion.setText("");

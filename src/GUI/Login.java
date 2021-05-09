@@ -5,22 +5,28 @@
  */
 package GUI;
 import BLL.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import javax.swing.JOptionPane;
 /**
  *
  * @author REINALDO
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
+    UsuarioService usuarioService;
+    EmpleadoService empleadoService;
+            
     public Login() {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        DataBaseConection conexion = new DataBaseConection();
+        usuarioService = new UsuarioService();
+        empleadoService = new EmpleadoService();
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,6 +118,11 @@ public class Login extends javax.swing.JFrame {
         Btn_Ingresar.setForeground(new java.awt.Color(255, 255, 255));
         Btn_Ingresar.setText("Ingresar");
         Btn_Ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_Ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_IngresarMouseClicked(evt);
+            }
+        });
         Btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_IngresarActionPerformed(evt);
@@ -187,14 +198,60 @@ public class Login extends javax.swing.JFrame {
     private void Lbl_CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lbl_CerrarMouseClicked
         // TODO add your handling code here:
         System.exit(0);
-        
     }//GEN-LAST:event_Lbl_CerrarMouseClicked
 
+    public void limpiarCampos(){
+       Inpt_Usuario.setText("");
+       Inpt_Clave.setText("");
+    }
+    
     private void Btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_IngresarActionPerformed
         // TODO add your handling code here:
-        new Admin(this).setVisible(true);
+        
     }//GEN-LAST:event_Btn_IngresarActionPerformed
 
+    private void Btn_IngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_IngresarMouseClicked
+        // TODO add your handling code here:
+        ArrayList<Empleado> empleados = empleadoService.consultarUsuarios();
+        
+        if(Inpt_Clave.getText().equals("") || Inpt_Usuario.getText().equals("")){
+             JOptionPane.showMessageDialog(this, "Ninguno de los campos puede estar vacío.", "Error al acceder.", JOptionPane.INFORMATION_MESSAGE);
+             return;
+        }
+        
+       
+            
+            try {
+                for(int i = 0; i < Inpt_Clave.getText().length(); i++){
+                    char caracter = Inpt_Clave.getText().charAt(i);
+                    if(caracter == '$' || caracter == '%' || caracter == '&' || caracter == '/' || caracter == '*' || caracter == '-' || caracter == 'ñ'){
+                        throw new TypeException("Error de tipado.");
+                    }
+                }
+                
+            }catch(TypeException ex) {
+                JOptionPane.showMessageDialog(this, "La clave no puede contener los siguientes caracteres:\n $,%,&,/,*,-,ñ", "Error de tipado", JOptionPane.INFORMATION_MESSAGE);
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                return;
+            }
+        
+        
+        for(Empleado empleado : empleados){
+            if((empleado.getContraseña().equals(Inpt_Clave.getText())) && empleado.getIdentificacion().equals(Inpt_Usuario.getText())){
+                limpiarCampos();
+                if(empleado.getRol().equals("Administrador")){
+                   new Admin(this).setVisible(true); 
+                   return;
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error al acceder.", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+    }//GEN-LAST:event_Btn_IngresarMouseClicked
+
+    
     /**
      * @param args the command line arguments
      */

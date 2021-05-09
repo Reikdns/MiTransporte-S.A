@@ -19,7 +19,9 @@ import java.util.logging.Logger;
  */
 public class DataBaseConection {
     
-    private final String cadenaDeConexion = "jdbc:sqlserver://REINALDO-PC\\SQLEXPRESS;database=MiTransporteSA;user=SqlUser;password=123456";
+    private final String remoteConection = "jdbc:sqlserver://mi-transporte-sa.database.windows.net:1433;database=MiTransporteSA;user=juancabolaños@mi-transporte-sa;password=Juanca123456;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    private final String localConection = "jdbc:sqlserver://REINALDO-PC\\SQLEXPRESS;database=MiTransporteSA;user=SqlUser;password=123456";
+    private final String cadenaDeConexion = localConection;
     private Connection conection;
     
     public String establecerConexion(){

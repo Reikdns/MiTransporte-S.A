@@ -25,7 +25,7 @@ public class UsuarioRepository {
         this.conection = conection;
     }
     
-     public void registrarUsuario(Usuario usuario){
+    public void registrarUsuario(Usuario usuario){
                  
         try {
          PreparedStatement statement = conection.prepareStatement("INSERT INTO Usuarios(Identificacion, Nombre, FechaDeNacimiento, Telefono, Direccion, Ciudad) VALUES(?, ?, ?, ?, ?, ?)");
